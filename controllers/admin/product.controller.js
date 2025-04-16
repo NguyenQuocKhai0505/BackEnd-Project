@@ -216,21 +216,21 @@ module.exports.editPatch = async (req, res) => {
 }
 //[GET] /products/detail/:id
 module.exports.detailPatch = async(req,res) =>{
-  try{
-    const find= {
-        deleted: false,
-        _id: req.params.id
-    }
-    //trả về một object
-    const product= await Product.findOne(find)
-    console.log(product)
-    res.render("admin/pages/products/detail",{
-        pageTitle: product.title,
-        product: product,
-        message: req.flash()
-    })
-}catch(error){
-    req.flash("error","Không tồn tại sản phẩm này")
-    res.redirect("/admin/products")
-}
+    try{
+      const find= {
+          deleted: false,
+          _id: req.params.id
+      }
+      //trả về một object
+      const product= await Product.findOne(find)
+      // console.log(product)
+      res.render("admin/pages/products/detail",{
+          pageTitle: product.title,
+          product: product,
+          message: req.flash()
+      })
+  }catch(error){
+      req.flash("error","Không tồn tại sản phẩm này")
+      res.redirect("/admin/products")
+  }
 }
