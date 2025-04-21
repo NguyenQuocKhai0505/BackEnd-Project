@@ -21,7 +21,7 @@ const port = process.env.PORT || 3000;
 app.use(methodOverride("_method"));
 
 // Thiết lập view engine
-app.set("views", "./views");
+app.set("views", `${__dirname}/views`);
 app.set("view engine", "pug");
 
 // Sử dụng cookie-parser
@@ -48,7 +48,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Cấu hình thư mục chứa file tĩnh
-app.use(express.static("public"));
+app.use(express.static(`${__dirname}/public`));
 
 // Khai báo route
 route(app);
