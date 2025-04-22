@@ -6,7 +6,7 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const database = require("./config/database");
 const systemConfig = require("./config/system");
-const common = require('./helpers/common')
+
 
 require("dotenv").config();
 
