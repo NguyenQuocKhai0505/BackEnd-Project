@@ -1,8 +1,20 @@
 const express = require('express');
 const multer  = require('multer')
+const cloudinary = require("cloudinary").v2
+const streamifier= require("streamifier")
 const router = express.Router();
-const storageMulter = require("../../helpers/storageMulter")
-const upload = multer({ storage: storageMulter()})
+const handleUpload = require("../../middlewares/cloudinaryUpload")
+//CLOUDINARY
+cloudinary.config({
+    cloud_name:"dec8wo4ow",
+    api_key:"544582542345657",
+    api_secret:"XrOZ3veL7jL08HkFljJmawbxYLo",
+});
+//END CLOUNDINARY
+
+
+const upload = multer()
+
 
 const controller = require("../../controllers/admin/product.controller");
 const validate = require("../../validates/admin/product.validate");
@@ -19,6 +31,7 @@ router.get('/create', controller.create)
 
 router.post('/create',
     upload.single("thumbnail"),
+    handleUpload,
     validate.checkTitle,
     controller.createPost
 )
@@ -27,7 +40,6 @@ router.patch(
     "/edit/:id",
     upload.single("thumbnail"),
     validate.checkTitle,
-    
     controller.editPatch
 )
 router.get(
