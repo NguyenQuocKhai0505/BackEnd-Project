@@ -6,9 +6,9 @@ const router = express.Router();
 const handleUpload = require("../../middlewares/cloudinaryUpload")
 //CLOUDINARY
 cloudinary.config({
-    cloud_name:"dec8wo4ow",
-    api_key:"544582542345657",
-    api_secret:"XrOZ3veL7jL08HkFljJmawbxYLo",
+    cloud_name:process.env.CLOUD_NAME,
+    api_key:process.env.CLOUD_KEY,
+    api_secret:process.env.CLOUD_SECRET,
 });
 //END CLOUNDINARY
 
