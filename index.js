@@ -56,6 +56,9 @@ route(app);
 routeAdmin(app);
 
 // Lắng nghe trên cổng
-app.listen(port, () => {
-  console.log(`🚀 Server chạy thành công trên cổng ${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`🚀 Server chạy thành công trên cổng ${port}`);
+// });
+// ✅ Export Express app dưới dạng handler
+const serverless = require("serverless-http");
+module.exports = serverless(app);
